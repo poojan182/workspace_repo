@@ -71,9 +71,22 @@ model.compile(metrics=['accuracy'], optimizer='adam' , loss='categorical_crossen
 #giving initial epoch=5 as hyper parameter
 epoch = 5
 
-final = model.fit(X_train,Y_train, epochs = epoch)
+#function callback to get output in one single file
+class result1(Callback):
+      def on_epoch_end(self, epoch, logs={}):
+          
+            file='/root/workspace/result1.txt' 
+            var=logs.get('accuracy')
+            with open(file, 'w') as filetowrite:
+                filetowrite.write(np.array2string(var))
+
+
+
+
+callbacks = result1()
+
+final = model.fit(X_train,Y_train, epochs = epoch,callbacks=[callbacks])
 
 model.summary()
 
-final
 
