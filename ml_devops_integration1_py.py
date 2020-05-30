@@ -20,7 +20,7 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten , Dense, Activation,Dropo
 
 from keras.utils import np_utils
 
-from keras.callbacks import callback
+from keras.callbacks import callbacks
 
 from sklearn.metrics import accuracy_score
 
