@@ -72,10 +72,10 @@ model.compile(metrics=['accuracy'], optimizer='adam' , loss='categorical_crossen
 epoch = 5
 
 #function callback to get output in one single file
-class result1(Callback):
+class mycallback(Callback):
       def on_epoch_end(self, epoch, logs={}):
           
-            file='/root/workspace/result1.txt' 
+            file='/root/Mlworkspace/result1.txt' 
             var=logs.get('accuracy')
             with open(file, 'w') as filetowrite:
                 filetowrite.write(np.array2string(var))
@@ -83,7 +83,7 @@ class result1(Callback):
 
 
 
-callbacks = result1()
+callbacks = mycallback()
 
 final = model.fit(X_train,Y_train, epochs = epoch,callbacks=[callbacks])
 
